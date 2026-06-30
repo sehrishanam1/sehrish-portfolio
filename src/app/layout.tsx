@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-const siteUrl = "https://sehrishanam.com";
+const siteUrl = SITE.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -25,13 +25,18 @@ export const metadata: Metadata = {
     template: `%s — ${SITE.name}`,
   },
   description: SITE.bio,
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
+    "Sehrish Anam",
+    "full-stack developer",
+    "WordPress developer",
+    "MERN stack developer",
+    "React developer",
+    "WordPress plugin developer",
+    "frontend developer Pakistan",
     "portfolio",
-    "product designer",
-    "frontend developer",
-    "UX UI",
-    "Next.js",
-    SITE.name,
   ],
   authors: [{ name: SITE.name }],
   creator: SITE.name,

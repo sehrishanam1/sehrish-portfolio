@@ -8,12 +8,17 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+// Live site URL — set NEXT_PUBLIC_SITE_URL in Vercel to your real domain.
+// Falls back to the production vercel.app URL so SEO tags are never wrong.
 export const SITE = {
   name: "Sehrish Anam",
   role: "Senior Full-Stack & WordPress Developer",
   email: "sehrishanam1@gmail.com",
   phone: "+92 300 0000000",
   location: "Faisalabad, Pakistan",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+    "https://sehrish-portfolio.vercel.app",
   bio: "Senior full-stack developer with 8+ years building production web apps across the MERN stack and WordPress — custom themes, published plugins, REST APIs, and SEO/performance work that ships fast and ranks well.",
 };
 
