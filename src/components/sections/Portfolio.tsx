@@ -5,10 +5,12 @@ import Image from "next/image";
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { PORTFOLIO_FILTERS, PROJECTS } from "@/lib/data";
+import { ProjectModal } from "@/components/sections/ProjectModal";
+import { PORTFOLIO_FILTERS, PROJECTS, type Project } from "@/lib/data";
 
 export function Portfolio() {
   const [filter, setFilter] = useState<(typeof PORTFOLIO_FILTERS)[number]>("All");
+  const [selected, setSelected] = useState<Project | null>(null);
 
   const filtered =
     filter === "All"
@@ -63,17 +65,13 @@ export function Portfolio() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="group relative overflow-hidden rounded-2xl border border-bg-line bg-bg-card"
+                  className="group relative cursor-pointer overflow-hidden rounded-2xl border border-bg-line bg-bg-card"
                 >
-                  {project.href && (
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View ${project.title}`}
-                      className="absolute inset-0 z-20"
-                    />
-                  )}
+                  <button
+                    onClick={() => setSelected(project)}
+                    aria-label={`View details for ${project.title}`}
+                    className="absolute inset-0 z-20"
+                  />
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={project.image}
@@ -106,6 +104,8 @@ export function Portfolio() {
           </motion.div>
         </LayoutGroup>
       </div>
+
+      <ProjectModal project={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }

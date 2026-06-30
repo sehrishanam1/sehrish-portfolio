@@ -77,13 +77,22 @@ export const SERVICES: Service[] = [
   },
 ];
 
+export interface ProjectLink {
+  label: string;
+  href: string;
+}
+
 export interface Project {
   id: number;
   title: string;
   category: string;
+  year: string;
   tags: string[];
   image: string;
-  href?: string;
+  description: string[];
+  skills: string[];
+  gallery: string[];
+  links?: ProjectLink[];
 }
 
 export const PORTFOLIO_FILTERS = [
@@ -98,54 +107,128 @@ export const PROJECTS: Project[] = [
   {
     id: 1,
     title: "Nuvora Reading Time & Progress Bar",
-    category: "Published WordPress.org plugin · 2026",
+    category: "Published WordPress.org Plugin",
+    year: "2026",
     tags: ["Plugins", "WordPress"],
-    href: "https://github.com/Nuvora",
     image:
       "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
+    description: [
+      "A lightweight WordPress plugin that adds an estimated reading time and a smooth scroll-progress bar to any post — published and listed on the official WordPress.org plugin directory.",
+      "It ships with an AI-assisted time override so authors can fine-tune estimates, plus full styling controls, making it drop-in friendly for any theme without touching code.",
+    ],
+    skills: ["PHP", "WordPress Plugin API", "JavaScript", "CSS3", "AI Integration"],
+    links: [{ label: "View on GitHub", href: "https://github.com/Nuvora" }],
+    gallery: [
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+    ],
   },
   {
     id: 2,
     title: "Nuvora Timeline for Elementor",
-    category: "Elementor widget plugin · 2025",
+    category: "Published Elementor Widget Plugin",
+    year: "2025",
     tags: ["Plugins", "WordPress"],
-    href: "https://github.com/Nuvora",
     image:
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
+    description: [
+      "A published Elementor widget that adds fully customizable animated timelines — vertical or horizontal — to any WordPress site built with Elementor.",
+      "It includes 3 ready-made color schemes, scroll-triggered animations and unlimited items via repeater fields, giving content teams a polished storytelling component with zero code.",
+    ],
+    skills: ["PHP", "Elementor Widget API", "JavaScript", "CSS3", "Repeater Fields"],
+    links: [{ label: "View on GitHub", href: "https://github.com/Nuvora" }],
+    gallery: [
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=1200&q=80",
+    ],
   },
   {
     id: 3,
     title: "Nuvora AIO Blocks",
-    category: "Gutenberg block toolkit · 2025",
+    category: "Published Gutenberg Block Toolkit",
+    year: "2025",
     tags: ["Plugins", "WordPress"],
-    href: "https://github.com/Nuvora",
     image:
       "https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=1200&q=80",
+    description: [
+      "An all-in-one Gutenberg toolkit packing 6 custom blocks — Counter, Pricing Table, Testimonial Carousel, Tabs, Icon Box and Slider — each with multiple styles and a live editor preview.",
+      "Built dependency-free with no page builder required, it gives site owners professional layout building blocks straight inside the native WordPress block editor.",
+    ],
+    skills: ["PHP", "WordPress Block Editor API", "React", "JavaScript", "SCSS"],
+    links: [{ label: "View on GitHub", href: "https://github.com/Nuvora" }],
+    gallery: [
+      "https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1200&q=80",
+    ],
   },
   {
     id: 4,
     title: "iSky9 — Cloud & Cybersecurity",
-    category: "Custom WordPress website · 2025",
+    category: "Custom WordPress Website",
+    year: "2025",
     tags: ["WordPress", "Web"],
     image:
       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    description: [
+      "A fully custom WordPress website for an enterprise cloud-services and cybersecurity company, built from a bespoke theme rather than a template.",
+      "It features a multi-section homepage, partner showcases and service breakdowns, all engineered for speed and on-page SEO to help the brand rank for competitive keywords.",
+    ],
+    skills: ["PHP", "Custom Theme", "HTML5", "CSS3", "JavaScript", "SEO"],
+    gallery: [
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+    ],
   },
   {
     id: 5,
     title: "Avento App",
-    category: "MERN web application · 2024",
+    category: "MERN Web Application",
+    year: "2024",
     tags: ["MERN", "Web"],
-    href: "https://github.com/sehrishanam1/avento-app",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    description: [
+      "A full-stack MERN application with a decoupled architecture — a React (Vite) frontend talking to a dedicated Node.js / Express backend over a clean REST API.",
+      "Styled with Tailwind CSS for a responsive UI and built around reusable hooks and component-based architecture, bundled with Vite for fast HMR in dev and optimized production builds.",
+    ],
+    skills: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Vite", "REST APIs"],
+    links: [
+      { label: "View on GitHub", href: "https://github.com/sehrishanam1/avento-app" },
+    ],
+    gallery: [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=1200&q=80",
+    ],
   },
   {
     id: 6,
     title: "Employee Management System",
-    category: "MERN dashboard with RBAC · 2025",
+    category: "MERN Dashboard with RBAC",
+    year: "2025",
     tags: ["MERN", "Web"],
     image:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+    description: [
+      "A complete Employee Management System built on the MERN stack with role-based access control, employee records management and a clean React admin dashboard.",
+      "The dashboard surfaces real-time data updates, secure JWT authentication and role-scoped views, streamlining HR workflows for teams from a single interface.",
+    ],
+    skills: ["React", "Redux", "Node.js", "Express.js", "MongoDB", "JWT Auth"],
+    gallery: [
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80",
+    ],
   },
 ];
 
