@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-bg-line;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-white/80 font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-accent text-black;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0b0b0d;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a30;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a42;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-[1240px] px-6;
+  }
+
+  .section-pad {
+    @apply py-24 md:py-32;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em] text-accent;
+  }
+
+  .heading-xl {
+    @apply font-display font-bold leading-[1.05] tracking-tight text-white;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-bg-line bg-bg-card/60 backdrop-blur-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-accent-soft hover:shadow-[0_0_30px_-5px_theme(colors.accent.DEFAULT)];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-bg-line px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-accent hover:text-accent;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent;
+  }
+
+  .grid-glow {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .glow-radial {
+    background: radial-gradient(
+      600px circle at 50% 0%,
+      rgba(163, 230, 53, 0.12),
+      transparent 70%
+    );
+  }
+}
