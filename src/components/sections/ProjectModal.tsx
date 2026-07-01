@@ -3,7 +3,15 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, ArrowUpRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import {
+  X,
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  Award,
+  CheckCircle2,
+} from "lucide-react";
 import type { Project } from "@/lib/data";
 
 interface ProjectModalProps {
@@ -105,6 +113,66 @@ function ModalContent({
     </div>
   );
 
+  // Optional: highlight stat strip (Version / Size / Rating / Status …)
+  const statStrip = project.stats && project.stats.length > 0 && (
+    <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {project.stats.map((s) => (
+        <div
+          key={s.label}
+          className="rounded-xl border border-bg-line bg-bg-card/50 px-3 py-3 text-center"
+        >
+          <div className="font-display text-lg font-bold text-accent">
+            {s.value}
+          </div>
+          <div className="mt-0.5 text-[11px] uppercase tracking-wide text-muted">
+            {s.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  // Optional: highlighted "why this shows real skill" callout
+  const worthBlock = project.worth && (
+    <div className="mt-7 rounded-2xl border border-accent/20 bg-accent/5 p-5">
+      <h3 className="flex items-center gap-2 font-display text-sm font-semibold text-white">
+        <Award className="h-4 w-4 text-accent" />
+        Why this shows real skill
+      </h3>
+      <p className="mt-2.5 text-sm leading-relaxed text-white/75">
+        {project.worth}
+      </p>
+    </div>
+  );
+
+  // Optional: "what this demonstrates" checklist (lead-in before "—" is bolded)
+  const demonstratesBlock = project.demonstrates &&
+    project.demonstrates.length > 0 && (
+      <div className="mt-7">
+        <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
+          What this project demonstrates
+        </h3>
+        <ul className="mt-4 space-y-3">
+          {project.demonstrates.map((item, i) => {
+            const dash = item.indexOf("—");
+            const lead = dash > -1 ? item.slice(0, dash).trim() : "";
+            const detail = dash > -1 ? item.slice(dash + 1).trim() : item;
+            return (
+              <li key={i} className="flex gap-3">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <p className="text-sm leading-relaxed text-white/75">
+                  {lead && (
+                    <span className="font-semibold text-white">{lead} — </span>
+                  )}
+                  {detail}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+
   const links = project.links && project.links.length > 0 && (
     <div className="mt-8 flex flex-wrap gap-3">
       {project.links.map((link) => (
@@ -154,7 +222,10 @@ function ModalContent({
         /* INLINE — single column, gallery flows inside the content */
         <div className="p-7 sm:p-9">
           {header}
+          {statStrip}
           {description}
+          {worthBlock}
+          {demonstratesBlock}
           {skills}
           {hasGallery && (
             <div className="mt-8">
@@ -173,7 +244,10 @@ function ModalContent({
         <div className="grid lg:grid-cols-[7fr_3fr]">
           <div className="p-7 sm:p-9">
             {header}
+            {statStrip}
             {description}
+            {worthBlock}
+            {demonstratesBlock}
             {skills}
             {links}
           </div>

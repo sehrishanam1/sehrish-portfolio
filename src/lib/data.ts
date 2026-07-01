@@ -104,6 +104,11 @@ export interface ProjectLink {
   href: string;
 }
 
+export interface ProjectStat {
+  value: string;
+  label: string;
+}
+
 export interface Project {
   id: number;
   title: string;
@@ -120,6 +125,13 @@ export interface Project {
   showBanner?: boolean;
   // galleryPosition: "side" = 30% right column | "inline" = inside the content, full width (default "side")
   galleryPosition?: "side" | "inline";
+  // --- Optional rich content (only rendered if present) ---
+  // stats: small highlight strip (e.g. Version / Size / Rating / Status)
+  stats?: ProjectStat[];
+  // worth: a highlighted "why this shows real skill" paragraph
+  worth?: string;
+  // demonstrates: bullet list; use "Lead-in — detail" and the lead-in is auto-bolded
+  demonstrates?: string[];
 }
 
 export const PORTFOLIO_FILTERS = [
@@ -141,9 +153,37 @@ export const PROJECTS: Project[] = [
       "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
     description: [
       "A lightweight WordPress plugin that adds an estimated reading time and a smooth scroll-progress bar to any post — published and listed on the official WordPress.org plugin directory.",
-      "It ships with an AI-assisted time override so authors can fine-tune estimates, plus full styling controls, making it drop-in friendly for any theme without touching code.",
+      "It ships with a local heuristic engine that fine-tunes estimates from real post structure, plus full styling controls and an Elementor widget, making it drop-in friendly for any theme without touching code.",
     ],
-    skills: ["PHP", "WordPress Plugin API", "JavaScript", "CSS3", "AI Integration"],
+    stats: [
+      { value: "1.0.0", label: "Version" },
+      { value: "<10KB", label: "Total Size" },
+      { value: "5.0★", label: "Rating" },
+      { value: "Live", label: "on WP.org" },
+    ],
+    worth:
+      "Getting a plugin approved on WordPress.org isn't the same as writing a plugin — the review team enforces strict security, performance, and coding-standard checks before anything goes live. Passing that bar is proof of professional-grade WordPress engineering, not just a personal project.",
+    demonstrates: [
+      "Custom algorithm design — built a local heuristic engine that analyzes post structure (heading density, list ratio, paragraph length) to intelligently adjust reading-time estimates, without relying on any external AI service.",
+      "Accessibility engineering (WCAG-minded) — implemented semantic ARIA roles, live aria-valuenow updates, keyboard focus support, and full prefers-reduced-motion compliance.",
+      "Performance-first development — shipped at ~1.5KB JS / ~1.2KB CSS gzipped, zero jQuery dependency, zero external asset calls, zero tracking.",
+      "Extensible architecture — exposed custom template tags (rte_the_reading_time()) and filter hooks (rte_badge_html, rte_show_badge, rte_ai_adjustment_factor) so other developers can extend it.",
+      "Elementor widget development — built a fully integrated drag-and-drop Elementor widget with responsive controls, on top of the core plugin.",
+      "Internationalization support — added CJK (Chinese / Japanese / Korean) content handling for global compatibility.",
+      "Security & compliance — passed WordPress.org's plugin review process, meeting their code-quality and security standards for public distribution.",
+    ],
+    skills: [
+      "WordPress Plugin Architecture",
+      "PHP (OOP)",
+      "JavaScript (ES6+)",
+      "Hooks & Filters API",
+      "Elementor Widget API",
+      "Accessibility (ARIA / WCAG)",
+      "Performance Optimization",
+      "Internationalization (i18n)",
+      "WordPress Coding Standards",
+      "Open Source Publishing",
+    ],
     links: [{ label: "View on GitHub", href: "https://github.com/Nuvora" }],
     gallery: [
       "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
