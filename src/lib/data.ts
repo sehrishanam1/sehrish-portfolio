@@ -16,15 +16,16 @@ export const SITE = {
   email: "sehrishanam1@gmail.com",
   phone: "+92 300 0000000",
   location: "Faisalabad, Pakistan",
+  linkedin: "https://www.linkedin.com/in/sehrish-anam/",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
     "https://sehrish-portfolio.vercel.app",
-  bio: "Senior full-stack developer with 8+ years building production web apps across the MERN stack and WordPress — custom themes, published plugins, REST APIs, and SEO/performance work that ships fast and ranks well.",
+  bio: "I don't just write code — I ship products that rank higher, load faster, and convert better. 8+ years across MERN and WordPress, with 3 plugins live on WordPress.org.",
 };
 
 export const SOCIALS: { label: string; href: string; icon: LucideIcon }[] = [
   { label: "GitHub", href: "https://github.com/sehrishanam1", icon: Github },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
+  { label: "LinkedIn", href: SITE.linkedin, icon: Linkedin },
   { label: "WordPress.org", href: "https://profiles.wordpress.org/", icon: Globe },
 ];
 

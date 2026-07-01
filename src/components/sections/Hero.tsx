@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Counter } from "@/components/ui/Counter";
 import { TypingText } from "@/components/ui/TypingText";
 import { SITE, STATS, SOCIALS } from "@/lib/data";
@@ -83,7 +83,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            Available for freelance work
+            Building Great Products — Let&apos;s Talk
           </motion.span>
 
           <motion.h1
@@ -101,10 +101,10 @@ export function Hero() {
             <TypingText
               className="text-gradient"
               phrases={[
-                "Product Designer",
-                "Frontend Developer",
-                "UX/UI Specialist",
-                "Creative Thinker",
+                "Tech Lead & Mentor",
+                "Full-Stack Engineer",
+                "UI/UX Development Expert",
+                "Performance & SEO Specialist",
               ]}
             />
           </motion.div>
@@ -120,9 +120,14 @@ export function Hero() {
             variants={item}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <a href="/cv.pdf" download className="btn-primary">
-              Download CV
-              <Download className="h-4 w-4" />
+            <a
+              href={SITE.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Connect on LinkedIn
+              <Linkedin className="h-4 w-4" />
             </a>
             <a
               href="#portfolio"
