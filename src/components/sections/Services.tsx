@@ -11,8 +11,8 @@ export function Services() {
       <div className="container-px">
         <SectionHeading
           eyebrow="What I Do"
-          title="My Quality Services"
-          description="End-to-end product work — from the first sketch to the final pixel-perfect, performant release."
+          title="Where I Deliver Results"
+          description="From first line of code to production launch — I build products that are fast, scalable, and built to last."
         />
 
         <motion.div
@@ -23,7 +23,7 @@ export function Services() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {SERVICES.map((service) => {
             const Icon = service.icon;

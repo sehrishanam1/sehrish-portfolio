@@ -2,7 +2,9 @@ import {
   Code2,
   Globe,
   Blocks,
-  Rocket,
+  Wrench,
+  LayoutTemplate,
+  TrendingUp,
   Github,
   Linkedin,
   type LucideIcon,
@@ -55,31 +57,45 @@ export interface Service {
 export const SERVICES: Service[] = [
   {
     number: "01",
-    title: "WordPress Development",
+    title: " Full-Stack Development",
     description:
-      "Custom themes, plugins and REST APIs — pixel-perfect, mobile-responsive and built to WordPress coding standards.",
+      "End-to-end web applications across multiple stacks — MERN and LAMP as my core, with the flexibility to work in whatever environment your project needs.",
     icon: Globe,
   },
   {
     number: "02",
-    title: "Full-Stack (MERN)",
+    title: "Plugin & Theme Development",
     description:
-      "End-to-end web apps with React, Node.js, Express and MongoDB — Redux state, JWT auth and real-time dashboards.",
-    icon: Code2,
-  },
-  {
-    number: "03",
-    title: "Plugins & Widgets",
-    description:
-      "Published WordPress.org plugins, Elementor widgets and Gutenberg blocks — reusable, dependency-free and well-documented.",
+      "Published on WordPress.org. Custom plugins, Elementor widgets, and Gutenberg blocks — reusable, dependency-free, built for the long run.",
     icon: Blocks,
   },
   {
-    number: "04",
-    title: "SEO & Performance",
+    number: "03",
+    title: "API & Third-Party Integrations",
     description:
-      "Core Web Vitals tuning, lazy loading and on-page SEO that cut load times 40%+ and drive first-page Google rankings.",
-    icon: Rocket,
+      "REST API development and third-party integrations — payment gateways, analytics, and custom workflows that connect your stack seamlessly.",
+    icon: Code2,
+  },
+  {
+    number: "04",
+    title: "Website Maintenance & Support",
+    description:
+      "Ongoing security updates, troubleshooting, and performance monitoring — so your site stays fast, safe, and up to date long after launch.",
+    icon: Wrench,
+  },
+  {
+    number: "05",
+    title: "WordPress Development",
+    description:
+      "Custom themes and full WordPress builds — pixel-perfect, mobile-first, and coded to WordPress standards from the ground up.",
+    icon: LayoutTemplate,
+  },
+  {
+    number: "06",
+    title: "SEO & Performance Optimization",
+    description:
+      "Core Web Vitals tuning and technical SEO that's delivered 40%+ faster load times and first-page Google rankings — not theory, results.",
+    icon: TrendingUp,
   },
 ];
 
