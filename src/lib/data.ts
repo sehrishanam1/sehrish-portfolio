@@ -40,9 +40,9 @@ export const NAV_LINKS = [
 ];
 
 export const STATS = [
-  { value: 8, suffix: "+", label: "Years of Experience" },
-  { value: 40, suffix: "+", label: "Projects Delivered" },
-  { value: 200, suffix: "+", label: "Students Trained" },
+  { value: 8, suffix: "+", label: "Years of Impact" },
+  { value: 40, suffix: "+", label: "Successful Launches" },
+  { value: 200, suffix: "+", label: "Careers Kickstarted" },
 ];
 
 export interface Service {

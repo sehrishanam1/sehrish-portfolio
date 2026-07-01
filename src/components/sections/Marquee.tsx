@@ -1,10 +1,13 @@
 const ITEMS = [
-  "Product Design",
-  "Web Development",
-  "Brand Identity",
-  "Motion Design",
-  "UX Research",
-  "Design Systems",
+  "Full-Stack Development",
+  "WordPress Plugin Development",
+  "MERN Stack Development", 
+  "Performance Optimization",
+  "Technical SEO", 
+  "Custom Theme Development",
+  "REST API Integration", 
+  "Frontend Engineering",
+  "Team Mentorship"
 ];
 
 export function Marquee() {
