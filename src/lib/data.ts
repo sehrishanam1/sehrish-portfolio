@@ -115,6 +115,11 @@ export interface Project {
   skills: string[];
   gallery: string[];
   links?: ProjectLink[];
+  // --- Optional per-project popup styling ---
+  // showBanner: full-width banner image at top of the popup (default true)
+  showBanner?: boolean;
+  // galleryPosition: "side" = 30% right column | "inline" = inside the content, full width (default "side")
+  galleryPosition?: "side" | "inline";
 }
 
 export const PORTFOLIO_FILTERS = [
@@ -181,6 +186,7 @@ export const PROJECTS: Project[] = [
       "Built dependency-free with no page builder required, it gives site owners professional layout building blocks straight inside the native WordPress block editor.",
     ],
     skills: ["PHP", "WordPress Block Editor API", "React", "JavaScript", "SCSS"],
+    showBanner: false, // demo: this popup has NO top banner
     links: [{ label: "View on GitHub", href: "https://github.com/Nuvora" }],
     gallery: [
       "https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=1200&q=80",
@@ -222,6 +228,7 @@ export const PROJECTS: Project[] = [
       "Styled with Tailwind CSS for a responsive UI and built around reusable hooks and component-based architecture, bundled with Vite for fast HMR in dev and optimized production builds.",
     ],
     skills: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Vite", "REST APIs"],
+    galleryPosition: "inline", // demo: gallery sits INSIDE the content, not in a side column
     links: [
       { label: "View on GitHub", href: "https://github.com/sehrishanam1/avento-app" },
     ],

@@ -11,6 +11,186 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
+/* Thumbnail gallery grid — reused for the side column and the inline layout */
+function GalleryGrid({
+  project,
+  columnsClass,
+  onOpen,
+}: {
+  project: Project;
+  columnsClass: string;
+  onOpen: (i: number) => void;
+}) {
+  return (
+    <div className={`mt-5 grid gap-3 ${columnsClass}`}>
+      {project.gallery.map((src, i) => (
+        <button
+          key={src}
+          onClick={() => onOpen(i)}
+          className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-bg-line"
+          aria-label={`Open image ${i + 1}`}
+        >
+          <Image
+            src={src}
+            alt={`${project.title} screenshot ${i + 1}`}
+            fill
+            sizes="(max-width: 1024px) 50vw, 25vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-bg/0 transition-colors duration-300 group-hover:bg-bg/30" />
+          <span className="absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-black">
+              <ArrowUpRight className="h-4 w-4" />
+            </span>
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/* Popup body: full-width banner + (70/30 side gallery) OR (inline gallery) */
+function ModalContent({
+  project,
+  onOpenImage,
+}: {
+  project: Project;
+  onOpenImage: (i: number) => void;
+}) {
+  const showBanner = project.showBanner !== false; // default: show
+  const inlineGallery = project.galleryPosition === "inline";
+  const hasGallery = project.gallery.length > 0;
+
+  const header = (
+    <div>
+      <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+        {project.tags.join(" · ")} · {project.year}
+      </span>
+      <h2 className="mt-2 font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
+        {project.title}
+      </h2>
+      <p className="mt-1 text-sm text-muted">{project.category}</p>
+    </div>
+  );
+
+  const description = (
+    <div className="mt-5 space-y-4">
+      {project.description.map((para, i) => (
+        <p key={i} className="text-sm leading-relaxed text-white/75">
+          {para}
+        </p>
+      ))}
+    </div>
+  );
+
+  const skills = (
+    <div className="mt-7">
+      <h3 className="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-wider text-white">
+        <Sparkles className="h-4 w-4 text-accent" />
+        Skills &amp; Tech
+      </h3>
+      <div className="mt-4 flex flex-wrap gap-2.5">
+        {project.skills.map((skill, i) => (
+          <motion.span
+            key={skill}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 + i * 0.05, duration: 0.3 }}
+            className="rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 text-xs font-medium text-accent transition-colors hover:border-accent hover:bg-accent/20"
+          >
+            {skill}
+          </motion.span>
+        ))}
+      </div>
+    </div>
+  );
+
+  const links = project.links && project.links.length > 0 && (
+    <div className="mt-8 flex flex-wrap gap-3">
+      {project.links.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary"
+        >
+          {link.label}
+          <ArrowUpRight className="h-4 w-4" />
+        </a>
+      ))}
+    </div>
+  );
+
+  const galleryHeading = (
+    <>
+      <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
+        Gallery
+      </h3>
+      <p className="mt-1 text-xs text-muted">
+        Click any image to view it full-screen.
+      </p>
+    </>
+  );
+
+  return (
+    <div className="max-h-[90vh] overflow-y-auto">
+      {/* Full-width banner across the top of the popup */}
+      {showBanner && (
+        <div className="relative h-52 w-full overflow-hidden sm:h-64 md:h-72">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-soft via-bg-soft/20 to-transparent" />
+        </div>
+      )}
+
+      {inlineGallery || !hasGallery ? (
+        /* INLINE — single column, gallery flows inside the content */
+        <div className="p-7 sm:p-9">
+          {header}
+          {description}
+          {skills}
+          {hasGallery && (
+            <div className="mt-8">
+              {galleryHeading}
+              <GalleryGrid
+                project={project}
+                columnsClass="grid-cols-2 sm:grid-cols-3"
+                onOpen={onOpenImage}
+              />
+            </div>
+          )}
+          {links}
+        </div>
+      ) : (
+        /* SIDE — 70 / 30 split: content left, gallery right */
+        <div className="grid lg:grid-cols-[7fr_3fr]">
+          <div className="p-7 sm:p-9">
+            {header}
+            {description}
+            {skills}
+            {links}
+          </div>
+          <aside className="border-t border-bg-line bg-bg-card/40 p-7 sm:p-9 lg:border-l lg:border-t-0">
+            {galleryHeading}
+            <GalleryGrid
+              project={project}
+              columnsClass="grid-cols-2"
+              onOpen={onOpenImage}
+            />
+          </aside>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
   // index of the image open in the lightbox, or null when closed
   const [lightbox, setLightbox] = useState<number | null>(null);
@@ -91,117 +271,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <X className="h-5 w-5" />
             </button>
 
-            <div className="grid max-h-[90vh] overflow-y-auto lg:grid-cols-2">
-              {/* LEFT — banner, title, description, skills */}
-              <div className="p-7 sm:p-9">
-                {/* Banner */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-bg-line">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent" />
-                </div>
-
-                {/* Name under banner */}
-                <div className="mt-6">
-                  <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-                    {project.tags.join(" · ")} · {project.year}
-                  </span>
-                  <h2 className="mt-2 font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
-                    {project.title}
-                  </h2>
-                  <p className="mt-1 text-sm text-muted">{project.category}</p>
-                </div>
-
-                {/* Description */}
-                <div className="mt-5 space-y-4">
-                  {project.description.map((para, i) => (
-                    <p key={i} className="text-sm leading-relaxed text-white/75">
-                      {para}
-                    </p>
-                  ))}
-                </div>
-
-                {/* Skills */}
-                <div className="mt-7">
-                  <h3 className="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-wider text-white">
-                    <Sparkles className="h-4 w-4 text-accent" />
-                    Skills &amp; Tech
-                  </h3>
-                  <div className="mt-4 flex flex-wrap gap-2.5">
-                    {project.skills.map((skill, i) => (
-                      <motion.span
-                        key={skill}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.2 + i * 0.05, duration: 0.3 }}
-                        className="rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 text-xs font-medium text-accent transition-colors hover:border-accent hover:bg-accent/20"
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Links */}
-                {project.links && project.links.length > 0 && (
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    {project.links.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-primary"
-                      >
-                        {link.label}
-                        <ArrowUpRight className="h-4 w-4" />
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* RIGHT — gallery */}
-              <div className="border-t border-bg-line bg-bg-card/40 p-7 sm:p-9 lg:border-l lg:border-t-0">
-                <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
-                  Gallery
-                </h3>
-                <p className="mt-1 text-xs text-muted">
-                  Click any image to view it full-screen.
-                </p>
-
-                <div className="mt-5 grid grid-cols-2 gap-3">
-                  {gallery.map((src, i) => (
-                    <button
-                      key={src}
-                      onClick={() => setLightbox(i)}
-                      className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-bg-line"
-                      aria-label={`Open image ${i + 1}`}
-                    >
-                      <Image
-                        src={src}
-                        alt={`${project.title} screenshot ${i + 1}`}
-                        fill
-                        sizes="(max-width: 1024px) 50vw, 25vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-bg/0 transition-colors duration-300 group-hover:bg-bg/30" />
-                      <span className="absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-black">
-                          <ArrowUpRight className="h-4 w-4" />
-                        </span>
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <ModalContent project={project} onOpenImage={setLightbox} />
           </motion.div>
 
           {/* LIGHTBOX */}
