@@ -116,6 +116,8 @@ export interface Project {
   year: string;
   tags: string[];
   image: string;
+  // icon: optional small brand/logo mark shown beside the title in the popup
+  icon?: string;
   description: string[];
   skills: string[];
   gallery: string[];
@@ -149,8 +151,8 @@ export const PROJECTS: Project[] = [
     category: "Published WordPress.org Plugin",
     year: "2026",
     tags: ["Plugins", "WordPress"],
-    image:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
+    image: "/projects/wordpress-plugins/reading-time/banner.webp",
+    icon: "/projects/wordpress-plugins/reading-time/icon.png",
     description: [
       "A lightweight WordPress plugin that adds an estimated reading time and a smooth scroll-progress bar to any post — published and listed on the official WordPress.org plugin directory.",
       "It ships with a local heuristic engine that fine-tunes estimates from real post structure, plus full styling controls and an Elementor widget, making it drop-in friendly for any theme without touching code.",
@@ -186,10 +188,11 @@ export const PROJECTS: Project[] = [
     ],
     links: [{ label: "View on GitHub", href: "https://github.com/Nuvora" }],
     gallery: [
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+      "/projects/wordpress-plugins/reading-time/screenshot-1.webp",
+      "/projects/wordpress-plugins/reading-time/screenshot-2.webp",
+      "/projects/wordpress-plugins/reading-time/screenshot-3.webp",
+      "/projects/wordpress-plugins/reading-time/screenshot-4.webp",
+      "/projects/wordpress-plugins/reading-time/screenshot-5.webp",
     ],
   },
   {

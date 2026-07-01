@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLenis } from "lenis/react";
 import {
   X,
   ArrowUpRight,
@@ -70,14 +71,27 @@ function ModalContent({
   const hasGallery = project.gallery.length > 0;
 
   const header = (
-    <div>
-      <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-        {project.tags.join(" · ")} · {project.year}
-      </span>
-      <h2 className="mt-2 font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
-        {project.title}
-      </h2>
-      <p className="mt-1 text-sm text-muted">{project.category}</p>
+    <div className="flex items-start gap-4">
+      {project.icon && (
+        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-bg-line bg-bg-card shadow-lg">
+          <Image
+            src={project.icon}
+            alt={`${project.title} icon`}
+            fill
+            sizes="56px"
+            className="object-contain p-2"
+          />
+        </div>
+      )}
+      <div>
+        <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+          {project.tags.join(" · ")} · {project.year}
+        </span>
+        <h2 className="mt-2 font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
+          {project.title}
+        </h2>
+        <p className="mt-1 text-sm text-muted">{project.category}</p>
+      </div>
     </div>
   );
 
@@ -202,7 +216,7 @@ function ModalContent({
   );
 
   return (
-    <div className="max-h-[90vh] overflow-y-auto">
+    <div className="max-h-[90vh] overflow-y-auto" data-lenis-prevent>
       {/* Full-width banner across the top of the popup */}
       {showBanner && (
         <div className="relative h-52 w-full overflow-hidden sm:h-64 md:h-72">
@@ -251,7 +265,7 @@ function ModalContent({
             {skills}
             {links}
           </div>
-          <aside className="border-t border-bg-line bg-bg-card/40 p-7 sm:p-9 lg:border-l lg:border-t-0">
+          <aside className="border-t border-bg-line bg-bg-card/40 p-7 sm:p-9 lg:sticky lg:top-0 lg:self-start lg:max-h-[90vh] lg:overflow-y-auto lg:border-l lg:border-t-0">
             {galleryHeading}
             <GalleryGrid
               project={project}
@@ -268,6 +282,7 @@ function ModalContent({
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
   // index of the image open in the lightbox, or null when closed
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const lenis = useLenis();
 
   const gallery = project?.gallery ?? [];
 
@@ -284,15 +299,18 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
     [gallery.length]
   );
 
-  // Lock body scroll while the modal is open
+  // Lock page scroll while the modal is open — also pause Lenis smooth-scroll,
+  // otherwise the wheel keeps driving the page behind the popup.
   useEffect(() => {
     if (!project) return;
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    lenis?.stop();
     return () => {
       document.body.style.overflow = original;
+      lenis?.start();
     };
-  }, [project]);
+  }, [project, lenis]);
 
   // Keyboard: ESC closes lightbox first, then the modal; arrows navigate gallery
   useEffect(() => {
@@ -323,6 +341,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           onClick={onClose}
+          data-lenis-prevent
           className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-sm sm:items-center sm:p-6"
           aria-modal="true"
           role="dialog"
