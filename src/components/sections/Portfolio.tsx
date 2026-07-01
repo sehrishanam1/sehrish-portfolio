@@ -73,13 +73,26 @@ export function Portfolio() {
                     className="absolute inset-0 z-20"
                   />
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                    />
+                    {project.icon ? (
+                      <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-bg-card to-bg-soft pb-14">
+                        <Image
+                          src={project.icon}
+                          alt={project.title}
+                          width={200}
+                          height={200}
+                          sizes="180px"
+                          className="h-24 w-24 object-contain drop-shadow-xl transition-transform duration-700 ease-out group-hover:scale-110"
+                        />
+                      </div>
+                    ) : (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
 
                     <div className="absolute right-4 top-4 grid h-11 w-11 translate-y-3 place-items-center rounded-full bg-accent text-black opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
