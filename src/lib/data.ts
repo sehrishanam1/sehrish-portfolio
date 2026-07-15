@@ -115,6 +115,9 @@ export interface Project {
   category: string;
   year: string;
   tags: string[];
+  // tagline: optional display label for the eyebrow/card (e.g. "Website · WordPress · Project Management").
+  // Falls back to tags.join(" · "). `tags` still drives the filter buttons.
+  tagline?: string;
   image: string;
   // icon: optional small brand/logo mark shown beside the title in the popup
   icon?: string;
@@ -374,6 +377,57 @@ export const PROJECTS: Project[] = [
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80",
+    ],
+  },
+  {
+    id: 7,
+    title: "Infinity Empire",
+    category: "Corporate Website, Custom Job Portal & Client-Managed Delivery",
+    year: "2026",
+    tags: ["Web", "WordPress"],
+    tagline: "Website · WordPress · Project Management",
+    image: "/projects/wordpress-websites/infinity-empire/banner.webp",
+    description: [
+      "A full corporate business website built end-to-end for a client, combining a modern brand-facing site with a custom-built WordPress job portal for internal hiring and applicant management. I owned the project in its entirety — development, UI design, SEO, and direct client management from first requirement to final launch.",
+      "The job portal isn't a form plugin bolted onto a page — it's a purpose-built system with its own custom post type and capability-based access control, giving the client full control over job postings and applicant handling without touching code. Paired with custom UI components matched to the brand identity and a technical SEO pass, this project reflects delivery at every layer: build, design, and client relationship.",
+    ],
+    stats: [
+      { value: "Full-Stack", label: "+ Project Mgmt" },
+      { value: "Custom", label: "Job Portal Plugin" },
+      { value: "SEO", label: "Optimized" },
+      { value: "Live", label: "iinfinity.tw" },
+    ],
+    worth:
+      "Building the site is table stakes — managing the client relationship end-to-end, translating vague business asks into a working job portal, and shipping on a deadline without a PM buffering you from the client is what separates freelance execution from agency-style delivery. This project required moving fluidly between developer, designer, and project manager without a handoff to anyone else.",
+    demonstrates: [
+      "Custom plugin architecture — built a job portal from scratch (custom post type, capability-based access control), not a form plugin.",
+      "Client & stakeholder management — sole point of contact for requirements, scope, and delivery timeline.",
+      "Technical SEO implementation — structured metadata, crawlability, and speed optimization for organic ranking.",
+      "UI system design — custom components built to match brand identity, not stock theme elements.",
+      "Cross-functional ownership — moved between dev, QA, and client communication without handoffs.",
+    ],
+    skills: [
+      "WordPress",
+      "Plugin Architecture",
+      "PHP (OOP)",
+      "Client Management",
+      "Project Delivery",
+      "Technical SEO",
+      "Custom Post Types",
+      "Requirements Gathering",
+    ],
+    links: [
+      { label: "Visit Live Site", href: "https://iinfinity.tw/" },
+      {
+        label: "View Figma Prototype",
+        href: "https://www.figma.com/proto/YAEnB1EYQrkdp6cwn0sOUO/Iinfinity-website?node-id=4404-7162&t=GuBMS5D0d0TjAaBW-0&scaling=min-zoom&content-scaling=fixed&page-id=4404%3A2144",
+      },
+    ],
+    gallery: [
+      "/projects/wordpress-websites/infinity-empire/screenshot-1.webp",
+      "/projects/wordpress-websites/infinity-empire/screenshot-2.webp",
+      "/projects/wordpress-websites/infinity-empire/screenshot-3.webp",
+      "/projects/wordpress-websites/infinity-empire/screenshot-4.webp",
     ],
   },
 ];

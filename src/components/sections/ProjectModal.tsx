@@ -85,7 +85,7 @@ function ModalContent({
       )}
       <div>
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-          {project.tags.join(" · ")} · {project.year}
+          {project.tagline ?? project.tags.join(" · ")} · {project.year}
         </span>
         <h2 className="mt-2 font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
           {project.title}

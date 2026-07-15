@@ -102,7 +102,7 @@ export function Portfolio() {
 
                   <div className="absolute inset-x-0 bottom-0 translate-y-3 p-6 transition-transform duration-500 group-hover:translate-y-0">
                     <span className="text-xs font-medium uppercase tracking-wider text-accent">
-                      {project.tags.join(" · ")}
+                      {project.tagline ?? project.tags.join(" · ")}
                     </span>
                     <h3 className="mt-1.5 font-display text-xl font-semibold text-white">
                       {project.title}
