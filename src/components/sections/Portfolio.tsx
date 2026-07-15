@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -11,11 +11,19 @@ import { PORTFOLIO_FILTERS, PROJECTS, type Project } from "@/lib/data";
 export function Portfolio() {
   const [filter, setFilter] = useState<(typeof PORTFOLIO_FILTERS)[number]>("All");
   const [selected, setSelected] = useState<Project | null>(null);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const filtered =
     filter === "All"
       ? PROJECTS
       : PROJECTS.filter((p) => p.tags.includes(filter));
+
+  useEffect(() => {
+    setVisibleCount(6);
+  }, [filter]);
+
+  const visibleProjects = filtered.slice(0, visibleCount);
+  const hasMore = visibleCount < filtered.length;
 
   return (
     <section id="portfolio" className="section-pad relative bg-bg-soft">
@@ -57,7 +65,7 @@ export function Portfolio() {
             className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
           >
             <AnimatePresence mode="popLayout">
-              {filtered.map((project) => (
+              {visibleProjects.map((project) => (
                 <motion.article
                   key={project.id}
                   layout
@@ -116,6 +124,33 @@ export function Portfolio() {
             </AnimatePresence>
           </motion.div>
         </LayoutGroup>
+
+        {hasMore ? (
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <button
+              onClick={() => setVisibleCount((count) => count + 6)}
+              className="btn-primary"
+            >
+              Load more
+              <ArrowUpRight className="h-4 w-4" />
+            </button>
+            <button
+              onClick={() => setVisibleCount(6)}
+              className="rounded-full border border-bg-line px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:border-accent hover:text-white"
+            >
+              Hide
+            </button>
+          </div>
+        ) : filtered.length > 6 ? (
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setVisibleCount(6)}
+              className="rounded-full border border-bg-line px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:border-accent hover:text-white"
+            >
+              Hide
+            </button>
+          </div>
+        ) : null}
       </div>
 
       <ProjectModal project={selected} onClose={() => setSelected(null)} />

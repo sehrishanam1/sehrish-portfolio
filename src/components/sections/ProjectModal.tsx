@@ -12,6 +12,8 @@ import {
   Sparkles,
   Award,
   CheckCircle2,
+  ZoomIn,
+  ZoomOut,
 } from "lucide-react";
 import type { Project } from "@/lib/data";
 
@@ -68,6 +70,11 @@ function ModalContent({
 }) {
   const showBanner = project.showBanner !== false; // default: show
   const inlineGallery = project.galleryPosition === "inline";
+  const isFullBanner = project.bannerFit === "contain";
+  const bannerFitClass = isFullBanner ? "object-contain" : "object-cover";
+  const bannerHeightClass = isFullBanner
+    ? "h-[45vh] sm:h-[50vh] md:h-[55vh]"
+    : "h-52 sm:h-64 md:h-72";
   const hasGallery = project.gallery.length > 0;
 
   const header = (
@@ -219,13 +226,13 @@ function ModalContent({
     <div className="max-h-[90vh] overflow-y-auto" data-lenis-prevent>
       {/* Full-width banner across the top of the popup */}
       {showBanner && (
-        <div className="relative h-52 w-full overflow-hidden sm:h-64 md:h-72">
+        <div className={`relative w-full overflow-hidden ${bannerHeightClass}`}>
           <Image
             src={project.image}
             alt={project.title}
             fill
             sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-cover"
+            className={bannerFitClass}
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-bg-soft via-bg-soft/20 to-transparent" />
@@ -282,11 +289,15 @@ function ModalContent({
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
   // index of the image open in the lightbox, or null when closed
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [lightboxZoom, setLightboxZoom] = useState(false);
   const lenis = useLenis();
 
   const gallery = project?.gallery ?? [];
 
-  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const closeLightbox = useCallback(() => {
+    setLightbox(null);
+    setLightboxZoom(false);
+  }, []);
   const next = useCallback(
     () => setLightbox((i) => (i === null ? i : (i + 1) % gallery.length)),
     [gallery.length]
@@ -329,6 +340,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
   // Reset lightbox whenever a different project is opened/closed
   useEffect(() => {
     setLightbox(null);
+    setLightboxZoom(false);
   }, [project]);
 
   return (
@@ -392,6 +404,20 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 >
                   <X className="h-5 w-5" />
                 </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxZoom((value) => !value);
+                  }}
+                  aria-label={lightboxZoom ? "Zoom out" : "Zoom in"}
+                  className="absolute right-5 top-20 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/50 text-white transition-colors hover:border-accent hover:text-accent"
+                >
+                  {lightboxZoom ? (
+                    <ZoomOut className="h-5 w-5" />
+                  ) : (
+                    <ZoomIn className="h-5 w-5" />
+                  )}
+                </button>
 
                 {gallery.length > 1 && (
                   <>
@@ -423,15 +449,22 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  onClick={(e) => e.stopPropagation()}
-                  className="relative h-[80vh] w-full max-w-4xl"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxZoom((v) => !v);
+                  }}
+                  className={`relative h-[80vh] w-full max-w-4xl overflow-hidden ${
+                    lightboxZoom ? "cursor-zoom-out" : "cursor-zoom-in"
+                  }`}
                 >
                   <Image
                     src={gallery[lightbox]}
                     alt={`${project.title} full image ${lightbox + 1}`}
                     fill
                     sizes="100vw"
-                    className="object-contain"
+                    className={`object-contain transition-transform duration-300 ${
+                      lightboxZoom ? "scale-[1.4]" : "scale-100"
+                    }`}
                   />
                 </motion.div>
 

@@ -128,6 +128,8 @@ export interface Project {
   // --- Optional per-project popup styling ---
   // showBanner: full-width banner image at top of the popup (default true)
   showBanner?: boolean;
+  // bannerFit: 'cover' keeps the default crop behavior; 'contain' shows the full image inside the banner area.
+  bannerFit?: "cover" | "contain";
   // galleryPosition: "side" = 30% right column | "inline" = inside the content, full width (default "side")
   galleryPosition?: "side" | "inline";
   // --- Optional rich content (only rendered if present) ---
@@ -386,7 +388,9 @@ export const PROJECTS: Project[] = [
     year: "2026",
     tags: ["Web", "WordPress"],
     tagline: "Website · WordPress · Project Management",
-    image: "/projects/wordpress-websites/infinity-empire/banner.webp",
+    image: "/projects/wordpress-websites/infinity-empire/Banner.webp",
+    bannerFit: "contain",
+    galleryPosition: "inline",
     description: [
       "A full corporate business website built end-to-end for a client, combining a modern brand-facing site with a custom-built WordPress job portal for internal hiring and applicant management. I owned the project in its entirety — development, UI design, SEO, and direct client management from first requirement to final launch.",
       "The job portal isn't a form plugin bolted onto a page — it's a purpose-built system with its own custom post type and capability-based access control, giving the client full control over job postings and applicant handling without touching code. Paired with custom UI components matched to the brand identity and a technical SEO pass, this project reflects delivery at every layer: build, design, and client relationship.",
@@ -424,10 +428,115 @@ export const PROJECTS: Project[] = [
       },
     ],
     gallery: [
-      "/projects/wordpress-websites/infinity-empire/screenshot-1.webp",
-      "/projects/wordpress-websites/infinity-empire/screenshot-2.webp",
-      "/projects/wordpress-websites/infinity-empire/screenshot-3.webp",
-      "/projects/wordpress-websites/infinity-empire/screenshot-4.webp",
+      "/projects/wordpress-websites/infinity-empire/screenshot (1).webp",
+      "/projects/wordpress-websites/infinity-empire/screenshot (2).webp",
+      "/projects/wordpress-websites/infinity-empire/screenshot (3).webp",
+      "/projects/wordpress-websites/infinity-empire/screenshot (4).webp",
+      "/projects/wordpress-websites/infinity-empire/screenshot (5).webp",
+    ],
+  },
+  {
+    id: 8,
+    title: "Anexly",
+    category: "Subscription Marketplace · WooCommerce · Custom UI Development",
+    year: "2025",
+    tags: ["Web", "WooCommerce"],
+    tagline: "Website · WooCommerce · Project Management",
+    image: "/projects/wordpress-websites/Anexly/Banner.webp",
+    bannerFit: "contain",
+    galleryPosition: "inline",
+    description: [
+      "Anexly is a subscription marketplace built on WooCommerce, letting users browse, compare, and purchase 300+ subscription products across streaming, music, AI tools, gaming, and productivity categories. I led this project as both developer and project manager — managing a technically demanding client directly, leading a 5-person team, and taking the build from a difficult set of requirements to a fully custom, production-stable storefront.",
+      "The core challenge was scale without slowdown: a 300-product catalog on WooCommerce breaks fast if you rely on default templates and queries. I redesigned the site's architecture and code quality from the ground up so the store stays fast and never loses cart or order data, even under a large, filterable catalog.",
+    ],
+    stats: [
+      { value: "Full-Stack", label: "+ PM" },
+      { value: "300+", label: "Products" },
+      { value: "5-Member", label: "Team" },
+      { value: "Live", label: "anexly.us" },
+    ],
+    worth:
+      "Anexly wasn't a template WooCommerce install — it demanded custom widgets, custom templates for every core commerce flow, and a client who needed constant technical translation and expectation management. Running a 5-person team while owning the client relationship meant I wasn't just writing code — I was making architecture calls, reviewing team output, and being the single point of accountability for a store that couldn't afford downtime or data loss at 300+ products.",
+    demonstrates: [
+      "Custom WooCommerce template development — built custom templates for the single product page, cart page, cart popups, and checkout flow instead of relying on default WooCommerce markup.",
+      "Custom widget engineering — built a 'See How Much You Save Instantly' price-comparison widget that calculates real-time savings between regular and bundled subscription pricing, plus a full filterable product browser (category, price range, service provider, duration).",
+      "Multi-gateway payment integration — implemented several payment method integrations into a unified custom checkout flow.",
+      "Performance at scale — restructured queries and code architecture to keep 300+ products fast and stable, with zero data loss on cart/order state.",
+      "Mobile-specific dynamic UI — built device-specific interaction patterns (slide-in filter drawer, mobile cart popups, responsive account dashboard) rather than just scaling desktop layouts down.",
+      "User account system — built a full customer dashboard (order history, order details, account/profile settings, password management).",
+      "Team leadership — managed and directed a 5-member development team through planning, execution, and delivery.",
+      "Difficult client management — served as the sole technical point of contact for a demanding, highly technical client, translating requirements into shippable scope.",
+    ],
+    skills: [
+      "WooCommerce Development",
+      "PHP (OOP)",
+      "Custom Template Architecture",
+      "Payment Gateway Integration",
+      "Performance Optimization",
+      "Responsive/Mobile UI",
+      "Team Leadership",
+      "Client Management",
+      "Project Delivery",
+      "MySQL",
+    ],
+    links: [{ label: "Visit Live Site", href: "https://anexly.us/" }],
+    gallery: [
+      "/projects/wordpress-websites/Anexly/screenshots (1).png",
+      "/projects/wordpress-websites/Anexly/screenshots (2).png",
+      "/projects/wordpress-websites/Anexly/screenshots (3).png",
+      "/projects/wordpress-websites/Anexly/screenshots (4).png",
+      "/projects/wordpress-websites/Anexly/screenshots (5).png",
+      "/projects/wordpress-websites/Anexly/screenshots (6).png",
+      "/projects/wordpress-websites/Anexly/screenshots (7).png",
+      "/projects/wordpress-websites/Anexly/screenshots (8).png",
+    ],
+  },
+  {
+    id: 9,
+    title: "iSky9",
+    category: "Cloud Services Website · Custom Domain Search & Automated Content Integration",
+    year: "2026",
+    tags: ["Web", "WordPress"],
+    tagline: "Website · WordPress · Project Management",
+    image: "/projects/wordpress-websites/iSky9/banner.webp",
+    bannerFit: "contain",
+    galleryPosition: "inline",
+    description: [
+      "A full corporate website built for a cloud infrastructure, cybersecurity, and AI solutions provider — spanning 10+ individual service pages, team and testimonial modules, and two custom-built dynamic features not found in a standard WordPress build. I led the project end-to-end: development, custom feature implementation, content management, and delivery timeline.",
+      "Beyond the core site architecture, this project required building real functionality on top of WordPress rather than configuring it — a domain search tool wired into a live registrar/WHOIS API, and an automated content feed pulling directly from the client's YouTube channel via the YouTube Data API v3 on a scheduled refresh. Both features remove manual upkeep for the client's team while giving visitors live, real-time functionality baked into the page.",
+    ],
+    stats: [
+      { value: "Full-Stack", label: "+ Project Mgmt" },
+      { value: "Custom", label: "Domain Search Tool" },
+      { value: "API", label: "Driven Content" },
+      { value: "Live", label: "iSky9.com" },
+    ],
+    worth:
+      "Most WordPress builds stop at page templates and content blocks. This project required going past that — integrating external APIs directly into the site so it does something, not just displays something. Wiring a registrar API into a functional search tool and building a scheduled content-fetch pipeline from YouTube both required backend logic beyond typical theme customization, while still delivering the polish and structure of a full 10+ page corporate site on schedule.",
+    demonstrates: [
+      "API integration — connected a registrar/WHOIS API to build a working domain search tool, and the YouTube Data API v3 for automated, scheduled content updates.",
+      "Custom feature development — went beyond plugin configuration to build functional, brand-specific tools rather than relying on stock solutions.",
+      "Site architecture at scale — structured and built 10+ distinct service pages with consistent design and navigation.",
+      "Content management — structured and populated content across service pages, team bios, and testimonials for consistency site-wide.",
+      "Project ownership — managed scope and timeline across development and content phases.",
+    ],
+    skills: [
+      "WordPress",
+      "Elementor",
+      "PHP",
+      "API Integration",
+      "YouTube Data API",
+      "WHOIS/Registrar API",
+      "Project Delivery",
+      "Content Management",
+      "Custom Feature Development",
+    ],
+    links: [{ label: "Visit Live Site", href: "https://iSky9.com/" }],
+    gallery: [
+      "/projects/wordpress-websites/iSky9/snapshot (1).webp",
+      "/projects/wordpress-websites/iSky9/snapshot (2).webp",
+      "/projects/wordpress-websites/iSky9/snapshot (3).webp",
+      "/projects/wordpress-websites/iSky9/snapshot (4).webp",
     ],
   },
 ];
