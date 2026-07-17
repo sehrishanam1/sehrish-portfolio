@@ -1,0 +1,18 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="jsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7DF1E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD93D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#jsGrad)" opacity="0.1" stroke="url(#jsGrad)" stroke-width="2"/>
+  
+  <!-- JavaScript square -->
+  <rect x="55" y="55" width="90" height="90" fill="#F7DF1E" rx="8"/>
+  
+  <!-- JS letters -->
+  <g transform="translate(100, 100)" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle" dominant-baseline="central">
+    <text x="-15" y="-5" font-size="48" fill="#323330">JS</text>
+  </g>
+</svg>

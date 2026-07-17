@@ -318,26 +318,6 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 4,
-    title: "iSky9 — Cloud & Cybersecurity",
-    category: "Custom WordPress Website",
-    year: "2025",
-    tags: ["WordPress", "Web"],
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    description: [
-      "A fully custom WordPress website for an enterprise cloud-services and cybersecurity company, built from a bespoke theme rather than a template.",
-      "It features a multi-section homepage, partner showcases and service breakdowns, all engineered for speed and on-page SEO to help the brand rank for competitive keywords.",
-    ],
-    skills: ["PHP", "Custom Theme", "HTML5", "CSS3", "JavaScript", "SEO"],
-    gallery: [
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
-    ],
-  },
-  {
     id: 5,
     title: "Avento App",
     category: "MERN Web Application",
@@ -388,7 +368,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     tags: ["Web", "WordPress"],
     tagline: "Website · WordPress · Project Management",
-    image: "/projects/wordpress-websites/infinity-empire/Banner.webp",
+    image: "/projects/wordpress-websites/infinity-empire/banner.webp",
     bannerFit: "contain",
     galleryPosition: "inline",
     description: [
@@ -551,38 +531,38 @@ export interface TimelineItem {
 export const EXPERIENCE: TimelineItem[] = [
   {
     period: "Oct 2025 — Present",
-    title: "Senior CMS & Full-Stack Developer",
+    title: "Senior CMS Developer",
     org: "Compilex Technologies",
     description:
-      "Lead client projects across MERN and WordPress — custom themes, plugins, REST APIs and performance tuning. Built a role-based Employee Management System with a real-time React dashboard.",
+      "Architecting end-to-end WordPress solutions — custom themes, plugins, and REST APIs — for client platforms including Alpha Realtors and Dtech Systems, cutting page load times by 50%+ through technical SEO and performance optimization.",
   },
   {
-    period: "Jun 2024 — Sep 2025",
-    title: "Website Developer",
+    period: "Dec 2024 — Sep 2025",
+    title: "Website Developer | ClickUp Consultant",
     org: "Dtech Systems",
     description:
-      "Shipped 4+ production MERN apps with Redux. Delivered Alpha Realtors & Dtech sites — first-page Google rankings and 40%+ faster loads via Core Web Vitals optimization and lazy loading.",
+      "Built full-stack MERN applications with Redux for scalable architecture, delivering the Alpha Realtors platform and Dtech Systems corporate site with measurable gains in search rankings and load speed.",
   },
   {
     period: "Aug 2022 — Nov 2024",
-    title: "Full Stack Developer",
-    org: "Essalan Digital Space Dive",
+    title: "WordPress Full-Stack Developer",
+    org: "Essalan™ Digital",
     description:
-      "Built custom WordPress themes & plugins plus PHP (OOP) + MySQL backends for offline platforms — authentication, event management, admissions and academic resource tooling.",
-  },
-  {
-    period: "Jan 2021 — May 2022",
-    title: "Website Developer",
-    org: "Ahsan Ikram Textile Pvt. Ltd",
-    description:
-      "Developed dynamic WordPress sites with Elementor & WPBakery, PHP/MySQL backends, plus SEO, accessibility, security hardening and payment-gateway / analytics integrations.",
+      "Developed custom offline WordPress systems — authentication, event management, and admissions tooling — using PHP (OOP) and MySQL, tailored to departmental operations.",
   },
   {
     period: "Jun 2017 — Jul 2022",
     title: "Technical Trainer",
-    org: "CM e-Rozgaar Program · PITB",
+    org: "e-Rozgaar Program, Punjab IT Board",
     description:
-      "Trained 200+ students in full-stack web development and evaluated 500+ projects — designing curriculum, live demos and mentorship on secure coding and database management.",
+      "Designed and delivered web development training programs in HTML, CSS, and JavaScript, mentoring aspiring developers on freelancing and entrepreneurship skills.",
+  },
+  {
+    period: "2011 — 2022",
+    title: "Front-End & WordPress Developer",
+    org: "FutureSoft, Creative IT Solutions, Nimble Web Solutions, Ahsan Ikram Textile Pvt. Ltd.",
+    description:
+      "Front-end and WordPress development roles building the foundation in HTML/CSS/JS, PHP, MySQL, and CMS theme/plugin customization.",
   },
 ];
 
@@ -633,15 +613,17 @@ export const COMMUNITY: Community = {
 export interface Skill {
   name: string;
   level: number;
+  icon: string;
+  color?: string;
 }
 
 export const SKILLS: Skill[] = [
-  { name: "WordPress (Themes & Plugins)", level: 95 },
-  { name: "React & MERN Stack", level: 92 },
-  { name: "JavaScript / TypeScript", level: 90 },
-  { name: "PHP & MySQL (OOP)", level: 88 },
-  { name: "Tailwind CSS & Responsive UI", level: 93 },
-  { name: "SEO & Performance Optimization", level: 90 },
+  { name: "Figma", level: 92, icon: "/skills/figma.svg", color: "from-purple-500 to-pink-500" },
+  { name: "Sketch", level: 80, icon: "/skills/sketch.svg", color: "from-yellow-400 to-amber-500" },
+  { name: "XD", level: 85, icon: "/skills/xd.svg", color: "from-pink-500 to-red-500" },
+  { name: "WordPress", level: 99, icon: "/skills/wordpress.svg", color: "from-blue-400 to-blue-600" },
+  { name: "React", level: 89, icon: "/skills/react.svg", color: "from-cyan-400 to-blue-500" },
+  { name: "JavaScript", level: 93, icon: "/skills/javascript.svg", color: "from-yellow-300 to-yellow-500" },
 ];
 
 export const TOOLBOX = [

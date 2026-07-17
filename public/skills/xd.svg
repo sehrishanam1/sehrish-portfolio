@@ -1,0 +1,18 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="xdGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B9D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C44569;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#xdGrad)" opacity="0.1" stroke="url(#xdGrad)" stroke-width="2"/>
+  
+  <!-- XD letters -->
+  <g transform="translate(100, 100)" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle" dominant-baseline="central">
+    <!-- X -->
+    <text x="-20" y="0" font-size="60" fill="#FF6B9D" letter-spacing="-5">X</text>
+    <!-- d -->
+    <text x="20" y="5" font-size="50" fill="#C44569">d</text>
+  </g>
+</svg>

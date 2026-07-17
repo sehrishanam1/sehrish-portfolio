@@ -8,10 +8,13 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectModal } from "@/components/sections/ProjectModal";
 import { PORTFOLIO_FILTERS, PROJECTS, type Project } from "@/lib/data";
 
+const INITIAL_VISIBLE_COUNT = 6;
+const LOAD_MORE_INCREMENT = 3;
+
 export function Portfolio() {
   const [filter, setFilter] = useState<(typeof PORTFOLIO_FILTERS)[number]>("All");
   const [selected, setSelected] = useState<Project | null>(null);
-  const [visibleCount, setVisibleCount] = useState(6);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
 
   const filtered =
     filter === "All"
@@ -19,19 +22,20 @@ export function Portfolio() {
       : PROJECTS.filter((p) => p.tags.includes(filter));
 
   useEffect(() => {
-    setVisibleCount(6);
+    setVisibleCount(INITIAL_VISIBLE_COUNT);
   }, [filter]);
 
   const visibleProjects = filtered.slice(0, visibleCount);
   const hasMore = visibleCount < filtered.length;
+  const showHideButton = visibleCount > INITIAL_VISIBLE_COUNT;
 
   return (
     <section id="portfolio" className="section-pad relative bg-bg-soft">
       <div className="container-px">
         <SectionHeading
-          eyebrow="Portfolio"
-          title="My Recent Works"
-          description="A selection of products, brands and interfaces I've designed and built for ambitious teams."
+          eyebrow="MY WORK"
+          title="Projects I've Built & Led"
+          description="From code to client communication — a look at the products, platforms, and brands I've delivered as both developer and project lead."
         />
 
         {/* Filters */}
@@ -40,20 +44,22 @@ export function Portfolio() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`relative rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
+              className={`group relative overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 focus:outline-none ${
                 filter === f
                   ? "text-black"
-                  : "text-white/70 hover:text-white"
+                  : "text-white/70 hover:text-accent"
               }`}
             >
-              {filter === f && (
+              {filter === f ? (
                 <motion.span
                   layoutId="filter-pill"
-                  className="absolute inset-0 -z-10 rounded-full bg-accent"
+                  className="absolute inset-0 z-0 rounded-full bg-accent"
                   transition={{ type: "spring", stiffness: 380, damping: 32 }}
                 />
+              ) : (
+                <span className="absolute inset-0 z-0 rounded-full bg-accent/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               )}
-              {f}
+              <span className="relative z-10">{f}</span>
             </button>
           ))}
         </div>
@@ -125,32 +131,31 @@ export function Portfolio() {
           </motion.div>
         </LayoutGroup>
 
-        {hasMore ? (
+        {(hasMore || showHideButton) && (
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <button
-              onClick={() => setVisibleCount((count) => count + 6)}
-              className="btn-primary"
-            >
-              Load more
-              <ArrowUpRight className="h-4 w-4" />
-            </button>
-            <button
-              onClick={() => setVisibleCount(6)}
-              className="rounded-full border border-bg-line px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:border-accent hover:text-white"
-            >
-              Hide
-            </button>
+            {hasMore && (
+              <button
+                onClick={() =>
+                  setVisibleCount((count) =>
+                    Math.min(count + LOAD_MORE_INCREMENT, filtered.length)
+                  )
+                }
+                className="btn-primary"
+              >
+                Load more
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            )}
+            {showHideButton && (
+              <button
+                onClick={() => setVisibleCount(INITIAL_VISIBLE_COUNT)}
+                className="rounded-full border border-bg-line px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:border-accent hover:text-white"
+              >
+                Hide
+              </button>
+            )}
           </div>
-        ) : filtered.length > 6 ? (
-          <div className="mt-8 flex justify-center">
-            <button
-              onClick={() => setVisibleCount(6)}
-              className="rounded-full border border-bg-line px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:border-accent hover:text-white"
-            >
-              Hide
-            </button>
-          </div>
-        ) : null}
+        )}
       </div>
 
       <ProjectModal project={selected} onClose={() => setSelected(null)} />
