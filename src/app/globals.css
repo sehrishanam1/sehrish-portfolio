@@ -39,6 +39,14 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #3a3a42;
   }
+  /* Utility to hide scrollbars for custom slider controls */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 }
 
 @layer components {
