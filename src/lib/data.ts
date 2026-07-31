@@ -28,7 +28,11 @@ export const SITE = {
 export const SOCIALS: { label: string; href: string; icon: LucideIcon }[] = [
   { label: "GitHub", href: "https://github.com/sehrishanam1", icon: Github },
   { label: "LinkedIn", href: SITE.linkedin, icon: Linkedin },
-  { label: "WordPress.org", href: "https://profiles.wordpress.org/", icon: Globe },
+  {
+    label: "WordPress.org",
+    href: "https://profiles.wordpress.org/meerab123/",
+    icon: Globe,
+  },
 ];
 
 export const NAV_LINKS = [
