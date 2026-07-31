@@ -6,9 +6,8 @@ import { Marquee } from "@/components/sections/Marquee";
 import { Services } from "@/components/sections/Services";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Resume } from "@/components/sections/Resume";
-import { Skills } from "@/components/sections/Skills";
+import { ExpertiseExplorer } from "@/components/sections/ExpertiseExplorer";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { Blog } from "@/components/sections/Blog";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
@@ -22,9 +21,8 @@ export default function Home() {
         <Services />
         <Portfolio />
         <Resume />
-        <Skills />
+        <ExpertiseExplorer />
         <Testimonials />
-        <Blog />
         <Contact />
       </main>
       <Footer />

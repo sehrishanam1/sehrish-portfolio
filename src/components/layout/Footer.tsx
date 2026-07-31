@@ -46,7 +46,7 @@ export function Footer() {
             <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
               Navigation
             </h4>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
@@ -66,26 +66,20 @@ export function Footer() {
 
           <div>
             <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
-              Get in touch
+              Core Expertise
             </h4>
             <ul className="mt-5 space-y-3 text-sm text-muted">
-              <li>
-                <a
-                  href={`mailto:${SITE.email}`}
-                  className="transition-colors hover:text-accent"
-                >
-                  {SITE.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${SITE.phone}`}
-                  className="transition-colors hover:text-accent"
-                >
-                  {SITE.phone}
-                </a>
-              </li>
-              <li>{SITE.location}</li>
+              {[
+                "Full-Stack Development",
+                "WordPress Engineering",
+                "Performance & SEO",
+                "Technical Leadership",
+              ].map((expertise) => (
+                <li key={expertise} className="flex items-center gap-2.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />
+                  {expertise}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

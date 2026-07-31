@@ -5,6 +5,7 @@
 :root {
   --font-sans: "Inter", system-ui, sans-serif;
   --font-display: "Space Grotesk", system-ui, sans-serif;
+  --brand-purple: #a855f7;
 }
 
 @layer base {
@@ -55,7 +56,7 @@
   }
 
   .section-pad {
-    @apply py-24 md:py-32;
+    @apply py-16 sm:py-20 lg:py-24;
   }
 
   .eyebrow {
@@ -75,7 +76,7 @@
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-bg-line px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-accent hover:text-accent;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-bg-line px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-purple-400 hover:text-purple-300;
   }
 }
 

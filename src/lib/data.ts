@@ -36,8 +36,7 @@ export const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Works", href: "#portfolio" },
   { label: "Resume", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Blog", href: "#blog" },
+  { label: "Expertise", href: "#expertise" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -318,6 +317,26 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    id: 4,
+    title: "iSky9 — Cloud & Cybersecurity",
+    category: "Custom WordPress Website",
+    year: "2025",
+    tags: ["WordPress", "Web"],
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    description: [
+      "A fully custom WordPress website for an enterprise cloud-services and cybersecurity company, built from a bespoke theme rather than a template.",
+      "It features a multi-section homepage, partner showcases and service breakdowns, all engineered for speed and on-page SEO to help the brand rank for competitive keywords.",
+    ],
+    skills: ["PHP", "Custom Theme", "HTML5", "CSS3", "JavaScript", "SEO"],
+    gallery: [
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+    ],
+  },
+  {
     id: 5,
     title: "Avento App",
     category: "MERN Web Application",
@@ -368,7 +387,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     tags: ["Web", "WordPress"],
     tagline: "Website · WordPress · Project Management",
-    image: "/projects/wordpress-websites/infinity-empire/banner.webp",
+    image: "/projects/wordpress-websites/infinity-empire/Banner.webp",
     bannerFit: "contain",
     galleryPosition: "inline",
     description: [
@@ -519,6 +538,52 @@ export const PROJECTS: Project[] = [
       "/projects/wordpress-websites/iSky9/snapshot (4).webp",
     ],
   },
+  {
+    id: 10,
+    title: "Compilex Technologies",
+    category: "Corporate Website · Custom Design System & Content Strategy",
+    year: "2026",
+    tags: ["Web", "WordPress"],
+    tagline: "Website · WordPress · Project Management · Design Strategy",
+    image: "/projects/wordpress-websites/compilex/Banner.webp",
+    bannerFit: "contain",
+    galleryPosition: "inline",
+    description: [
+      "A full corporate website built for Compilex Technologies, a custom software development company spanning AI, blockchain, cloud, and enterprise solutions. I owned this project as Project Manager — but beyond scope and delivery, I drove the site's design direction, content strategy, and structure from the ground up, with several sections custom-built rather than pulled from stock templates.",
+      "This wasn't a case of managing a build someone else designed — the visual system, service showcase interactions, and content narrative (how the company's work is framed, sequenced, and proven through stats and testimonials) were shaped by me. The result is a site that reads as a cohesive brand experience rather than a stitched-together template: an animated multi-category service explorer, a six-step 'How We Process' section, live stat counters, and a testimonial system — all built to reinforce trust and credibility for an enterprise-facing audience.",
+    ],
+    stats: [
+      { value: "Project Mgmt", label: "Design & UX Strategy" },
+      { value: "Custom", label: "Built Sections" },
+      { value: "Live", label: "compilex.it.com" },
+    ],
+    worth:
+      "Managing a project is one skill; deciding what the project should look like and say is another. This project required both — translating a technical company's positioning into a visual and content strategy, then managing that vision through to a live, polished build. It's proof of range beyond execution: strategic thinking about how a brand should present itself, not just following a brief.",
+    demonstrates: [
+      "Design & UX direction — defined the visual system and page structure, including a custom interactive service showcase (tabbed categories with icon-driven sub-navigation).",
+      "Content strategy — shaped how the company's expertise is presented: outcome-driven proof points (uptime, revenue impact, cost reduction), a structured 6-step process narrative, and a testimonial system built for credibility.",
+      "Custom-built sections — several homepage modules (service explorer, process steps, stat counters) built beyond standard theme components.",
+      "Project management — owned scope, timeline, and delivery from requirement to launch.",
+    ],
+    skills: [
+      "WordPress",
+      "Elementor",
+      "UI/UX Design",
+      "Content Strategy",
+      "Project Delivery",
+      "Custom Sections",
+      "Brand Storytelling",
+    ],
+    links: [{ label: "Visit Live Site", href: "https://compilex.it.com/" }],
+    gallery: [
+      "/projects/wordpress-websites/compilex/screenshots (1).webp",
+      "/projects/wordpress-websites/compilex/screenshots (6).webp",
+      "/projects/wordpress-websites/compilex/screenshots (7).webp",
+      "/projects/wordpress-websites/compilex/screenshots (8).webp",
+      "/projects/wordpress-websites/compilex/screenshots (9).webp",
+      "/projects/wordpress-websites/compilex/screenshots (10).webp",
+    ],
+  },
 ];
 
 export interface TimelineItem {
@@ -531,38 +596,38 @@ export interface TimelineItem {
 export const EXPERIENCE: TimelineItem[] = [
   {
     period: "Oct 2025 — Present",
-    title: "Senior CMS Developer",
+    title: "Senior CMS & Full-Stack Developer",
     org: "Compilex Technologies",
     description:
-      "Architecting end-to-end WordPress solutions — custom themes, plugins, and REST APIs — for client platforms including Alpha Realtors and Dtech Systems, cutting page load times by 50%+ through technical SEO and performance optimization.",
+      "Lead client projects across MERN and WordPress — custom themes, plugins, REST APIs and performance tuning. Built a role-based Employee Management System with a real-time React dashboard.",
   },
   {
-    period: "Dec 2024 — Sep 2025",
-    title: "Website Developer | ClickUp Consultant",
+    period: "Jun 2024 — Sep 2025",
+    title: "Website Developer",
     org: "Dtech Systems",
     description:
-      "Built full-stack MERN applications with Redux for scalable architecture, delivering the Alpha Realtors platform and Dtech Systems corporate site with measurable gains in search rankings and load speed.",
+      "Shipped 4+ production MERN apps with Redux. Delivered Alpha Realtors & Dtech sites — first-page Google rankings and 40%+ faster loads via Core Web Vitals optimization and lazy loading.",
   },
   {
     period: "Aug 2022 — Nov 2024",
-    title: "WordPress Full-Stack Developer",
-    org: "Essalan™ Digital",
+    title: "Full Stack Developer",
+    org: "Essalan Digital Space Dive",
     description:
-      "Developed custom offline WordPress systems — authentication, event management, and admissions tooling — using PHP (OOP) and MySQL, tailored to departmental operations.",
+      "Built custom WordPress themes & plugins plus PHP (OOP) + MySQL backends for offline platforms — authentication, event management, admissions and academic resource tooling.",
+  },
+  {
+    period: "Jan 2021 — May 2022",
+    title: "Website Developer",
+    org: "Ahsan Ikram Textile Pvt. Ltd",
+    description:
+      "Developed dynamic WordPress sites with Elementor & WPBakery, PHP/MySQL backends, plus SEO, accessibility, security hardening and payment-gateway / analytics integrations.",
   },
   {
     period: "Jun 2017 — Jul 2022",
     title: "Technical Trainer",
-    org: "e-Rozgaar Program, Punjab IT Board",
+    org: "CM e-Rozgaar Program · PITB",
     description:
-      "Designed and delivered web development training programs in HTML, CSS, and JavaScript, mentoring aspiring developers on freelancing and entrepreneurship skills.",
-  },
-  {
-    period: "2011 — 2022",
-    title: "Front-End & WordPress Developer",
-    org: "FutureSoft, Creative IT Solutions, Nimble Web Solutions, Ahsan Ikram Textile Pvt. Ltd.",
-    description:
-      "Front-end and WordPress development roles building the foundation in HTML/CSS/JS, PHP, MySQL, and CMS theme/plugin customization.",
+      "Trained 200+ students in full-stack web development and evaluated 500+ projects — designing curriculum, live demos and mentorship on secure coding and database management.",
   },
 ];
 
@@ -581,10 +646,25 @@ export const EDUCATION: TimelineItem[] = [
     description:
       "Core computer science — programming, databases, web technologies and software design.",
   },
+  {
+    period: "Completed",
+    title: "M.A., English",
+    org: "Government College University Faisalabad",
+    description:
+      "Studied English literature, developing a strong foundation in literary analysis, critical thinking and communication.",
+  },
+  {
+    period: "Completed",
+    title: "Bachelor of Education (B.Ed.)",
+    org: "Education Studies",
+    description:
+      "Studied education, teaching methodologies, curriculum development and effective classroom practices.",
+  },
 ];
 
 export interface Publication {
   title: string;
+  summary: string;
   journal: string;
   details: string;
 }
@@ -592,6 +672,8 @@ export interface Publication {
 export const PUBLICATION: Publication = {
   title:
     "Impact of Workforce Motivation on Productivity of Organizations — A Case Study of the Apparel Industry, UK",
+  summary:
+    "Examined how motivational factors influence employee productivity within the UK apparel sector, analyzing the relationship between workforce engagement, job satisfaction, and organizational output.",
   journal: "International Journal of Scientific & Engineering Research",
   details: "Vol. 6, Issue 10 · Oct 2015 · ISSN 2229-5518",
 };
@@ -613,17 +695,21 @@ export const COMMUNITY: Community = {
 export interface Skill {
   name: string;
   level: number;
-  icon: string;
-  color?: string;
+  // icon: optional path to an SVG in /public/skills — falls back to a letter badge
+  icon?: string;
 }
 
 export const SKILLS: Skill[] = [
-  { name: "Figma", level: 92, icon: "/skills/figma.svg", color: "from-purple-500 to-pink-500" },
-  { name: "Sketch", level: 80, icon: "/skills/sketch.svg", color: "from-yellow-400 to-amber-500" },
-  { name: "XD", level: 85, icon: "/skills/xd.svg", color: "from-pink-500 to-red-500" },
-  { name: "WordPress", level: 99, icon: "/skills/wordpress.svg", color: "from-blue-400 to-blue-600" },
-  { name: "React", level: 89, icon: "/skills/react.svg", color: "from-cyan-400 to-blue-500" },
-  { name: "JavaScript", level: 93, icon: "/skills/javascript.svg", color: "from-yellow-300 to-yellow-500" },
+  {
+    name: "WordPress (Themes & Plugins)",
+    level: 95,
+    icon: "/skills/wordpress.svg",
+  },
+  { name: "React & MERN Stack", level: 92, icon: "/skills/react.svg" },
+  { name: "JavaScript / TypeScript", level: 90, icon: "/skills/javascript.svg" },
+  { name: "PHP & MySQL (OOP)", level: 88 },
+  { name: "Tailwind CSS & Responsive UI", level: 93 },
+  { name: "SEO & Performance Optimization", level: 90 },
 ];
 
 export const TOOLBOX = [
@@ -644,21 +730,93 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "Sehrish rebuilt our site on a custom WordPress theme and our Core Web Vitals went green — load times dropped over 40% and we finally rank on page one for our target keywords.",
-    name: "Project Lead",
-    title: "Alpha Realtors",
+      "Sehrish is extremely responsive and a great help when needed for my website development. I am always happy to work with her and know I can count on her to get the job done in a timely manner.",
+    name: "wanderlustjen",
+    title: "United States",
   },
   {
     quote:
-      "Her Nuvora plugins are clean, well-documented and just work. The Elementor timeline widget saved our team days of custom development.",
-    name: "Founder",
-    title: "iSky9 Cloud Solutions",
+      "She helped me a lot with my WooCommerce and other issues. She’s a great person and has excellent knowledge of WordPress, Elementor, domain management, and coding. Communication and delivery were on point. Thank you, Sehrish.",
+    name: "elenawww",
+    title: "United States",
   },
   {
     quote:
-      "From MERN dashboards to plugin development, Sehrish delivers end-to-end and hits every deadline. A genuinely senior, reliable pair of hands.",
-    name: "Engineering Manager",
-    title: "Dtech Systems",
+      "Absolutely thrilled with the web development services provided! The team demonstrated exceptional expertise and professionalism throughout the entire project. They were incredibly responsive, understood our requirements perfectly, and delivered a stunning website that exceeded our expectations.",
+    name: "andygami",
+    title: "Singapore",
+  },
+  {
+    quote:
+      "Sehrish Anam was absolutely wonderful to work with. Dedicated to getting it right, she is gifted with an understanding of what you want to see in the design, and so hardworking and diligent to make it happen. Thank you, Sehrish, for your outstanding professionalism and creativity.",
+    name: "darlenejacobson",
+    title: "United States",
+  },
+  {
+    quote:
+      "Sehrish Anam delivered exceptional work on my website, demonstrating top-notch professionalism, attention to detail, and deep code expertise. Communicating with her was a breeze; she was proactive, responsive, and consistently went above and beyond. Her magic touch brought my broken site back to life. I’ll definitely hire her for future website maintenance!",
+    name: "consolidatedweb",
+    title: "United States",
+  },
+  {
+    quote:
+      "Sehrish Anam delivered exceptional work, showcasing her code expertise and keen attention to detail, truly exceeding my expectations. Her proactive communication and politeness made the entire process smooth. She took my dead website and transformed it with her incredible design skills using a new theme. She listened intently to my needs, ensuring changes were made promptly. I’m beyond satisfied and will definitely hire her again.",
+    name: "consolidatedweb",
+    title: "United States",
+  },
+  {
+    quote:
+      "I couldn’t be happier with the effort and care Sehrish Anam demonstrated working on my order. Her work is to a very high standard and always makes sure I am happy. Her communication is excellent, friendly, and clear. There is a high level of knowledge and experience. I would not hesitate to place an order again.",
+    name: "artlad",
+    title: "United Kingdom",
+  },
+  {
+    quote:
+      "Sehrish was easy to work with. She communicated with me well and fixed my problem in no time! Her work was fantastic! I recommend her services and will use her again.",
+    name: "kristlstar",
+    title: "United States",
+  },
+  {
+    quote:
+      "Excellent service. My project was very complicated and she delivered it. She exceeded my expectations, communicated well, and was available on Zoom to discuss solutions to difficulties. Reasonable price; I will get back in the future for my other projects. Thank you again!",
+    name: "tbasoglou",
+    title: "Australia",
+  },
+  {
+    quote:
+      "An unbelievable service. Contacted at 6 p.m. yesterday and the order was completed by 8 a.m. the next day! Highly recommend—a true expert in their field.",
+    name: "maxgibbons332",
+    title: "United Kingdom",
+  },
+  {
+    quote:
+      "Super awesome experience. Something I struggled with for three days was finally solved. Thanks for your magic. 10/10 recommend. Will come back again.",
+    name: "dioptanzy",
+    title: "Singapore",
+  },
+  {
+    quote:
+      "Amazing work! Beautiful website and quick delivery! Sehrish always does the extra mile and goes beyond my expectations. She will recommend what’s best according to what you need, not what you think you need. She knows her things for sure. Looking forward to our next collaboration! Thank you.",
+    name: "apalroto",
+    title: "Australia",
+  },
+  {
+    quote:
+      "Sehrish was a pleasure to work with. She understood the requirements and did exactly what we asked for, she went the extra mile and made sure we were happy. I would highly recommend her, and I will be using her again! Well done Sehrish, you have been a star!",
+    name: "jllaniatravelit",
+    title: "United Kingdom",
+  },
+  {
+    quote:
+      "This is the first time I’m working with her. She is brilliant. Communication is on point. Extremely patient in getting to the bottom of the details and understanding it. Very good with Elementor and WordPress.",
+    name: "chitrabharan470",
+    title: "India",
+  },
+  {
+    quote:
+      "Sehrish is very responsive and she truly tried her best to deliver a result that meets my needs. We had some difficulty understanding each other since my web design skills and computer language are quite limited, but I had a very clear idea of how I wanted my multilingual website to function. Sehrish went out of her way to make me understand what she built and how it functions. Very friendly in her communication. I truly recommend working with her!",
+    name: "minkjo",
+    title: "Netherlands",
   },
 ];
 

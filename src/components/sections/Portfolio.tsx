@@ -8,13 +8,10 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectModal } from "@/components/sections/ProjectModal";
 import { PORTFOLIO_FILTERS, PROJECTS, type Project } from "@/lib/data";
 
-const INITIAL_VISIBLE_COUNT = 6;
-const LOAD_MORE_INCREMENT = 3;
-
 export function Portfolio() {
   const [filter, setFilter] = useState<(typeof PORTFOLIO_FILTERS)[number]>("All");
   const [selected, setSelected] = useState<Project | null>(null);
-  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const filtered =
     filter === "All"
@@ -22,20 +19,20 @@ export function Portfolio() {
       : PROJECTS.filter((p) => p.tags.includes(filter));
 
   useEffect(() => {
-    setVisibleCount(INITIAL_VISIBLE_COUNT);
+    setVisibleCount(6);
   }, [filter]);
 
   const visibleProjects = filtered.slice(0, visibleCount);
   const hasMore = visibleCount < filtered.length;
-  const showHideButton = visibleCount > INITIAL_VISIBLE_COUNT;
+  const showHideButton = visibleCount > 6;
 
   return (
     <section id="portfolio" className="section-pad relative bg-bg-soft">
       <div className="container-px">
         <SectionHeading
-          eyebrow="MY WORK"
-          title="Projects I've Built & Led"
-          description="From code to client communication — a look at the products, platforms, and brands I've delivered as both developer and project lead."
+          eyebrow="Portfolio"
+          title="My Recent Works"
+          description="A selection of products, brands and interfaces I've designed and built for ambitious teams."
         />
 
         {/* Filters */}
@@ -44,22 +41,18 @@ export function Portfolio() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`group relative overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 focus:outline-none ${
+              className={`group relative overflow-hidden rounded-full px-5 py-2.5 text-sm font-medium transition duration-300 ${
                 filter === f
-                  ? "text-black"
-                  : "text-white/70 hover:text-accent"
+                  ? "bg-gradient-to-r from-accent via-accent-soft to-accent text-black shadow-[0_0_25px_rgba(163,230,53,0.25)]"
+                  : "text-white/70 hover:text-white"
               }`}
             >
-              {filter === f ? (
-                <motion.span
-                  layoutId="filter-pill"
-                  className="absolute inset-0 z-0 rounded-full bg-accent"
-                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                />
-              ) : (
-                <span className="absolute inset-0 z-0 rounded-full bg-accent/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              )}
-              <span className="relative z-10">{f}</span>
+              {f}
+              <span
+                className={`absolute -bottom-1 left-1/2 h-1 rounded-full bg-accent transition-all duration-300 -translate-x-1/2 ${
+                  filter === f ? "w-10" : "w-0 group-hover:w-10"
+                }`}
+              />
             </button>
           ))}
         </div>
@@ -135,20 +128,17 @@ export function Portfolio() {
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {hasMore && (
               <button
-                onClick={() =>
-                  setVisibleCount((count) =>
-                    Math.min(count + LOAD_MORE_INCREMENT, filtered.length)
-                  )
-                }
-                className="btn-primary"
+                onClick={() => setVisibleCount((count) => count + 6)}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-black bg-gradient-to-r from-accent via-accent-soft to-accent transition-all duration-300 shadow-[0_0_30px_-10px_rgba(163,230,53,0.35)] hover:shadow-[0_0_40px_-10px_rgba(163,230,53,0.45)]"
               >
                 Load more
                 <ArrowUpRight className="h-4 w-4" />
               </button>
             )}
+
             {showHideButton && (
               <button
-                onClick={() => setVisibleCount(INITIAL_VISIBLE_COUNT)}
+                onClick={() => setVisibleCount(6)}
                 className="rounded-full border border-bg-line px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:border-accent hover:text-white"
               >
                 Hide

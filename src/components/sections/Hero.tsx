@@ -70,7 +70,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-10"
       >
         <div className="absolute -left-20 top-24 h-72 w-72 rounded-full bg-accent/10 blur-[120px]" />
-        <div className="absolute right-0 top-1/3 h-96 w-96 rounded-full bg-accent/5 blur-[140px]" />
+        <div className="absolute right-0 top-1/3 h-96 w-96 rounded-full bg-purple-500/10 blur-[140px]" />
       </motion.div>
 
       <div className="container-px grid w-full items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
@@ -189,13 +189,13 @@ export function Hero() {
           className="group relative mx-auto hidden w-full max-w-md lg:block"
         >
           {/* Soft accent glow behind the card — intensifies on hover */}
-          <div className="absolute inset-0 -z-10 animate-float rounded-[2.5rem] bg-accent/20 blur-3xl transition-all duration-500 group-hover:bg-accent/45" />
+          <div className="absolute inset-0 -z-10 animate-float rounded-[2.5rem] bg-purple-500/25 blur-3xl transition-all duration-500 group-hover:bg-purple-500/45" />
           <div className="relative -rotate-3 overflow-hidden rounded-[2.5rem] border-2 border-bg-line bg-bg-card transition-all duration-500 ease-out group-hover:rotate-0 group-hover:border-accent group-hover:shadow-[0_0_45px_-4px_rgba(163,230,53,0.7)]">
             <Image
-              src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80"
+              src="/images/sehrish-portfolio.png"
               alt={SITE.name}
-              width={900}
-              height={1100}
+              width={512}
+              height={512}
               priority
               className="h-full w-full object-cover"
             />
