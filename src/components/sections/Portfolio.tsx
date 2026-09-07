@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -12,11 +12,28 @@ export function Portfolio() {
   const [filter, setFilter] = useState<(typeof PORTFOLIO_FILTERS)[number]>("All");
   const [selected, setSelected] = useState<Project | null>(null);
   const [visibleCount, setVisibleCount] = useState(6);
+  const [projects, setProjects] = useState<Project[]>(PROJECTS);
+  const [shuffleReady, setShuffleReady] = useState(false);
+  const hasShuffled = useRef(false);
+
+  useEffect(() => {
+    if (hasShuffled.current) return;
+    hasShuffled.current = true;
+
+    const shuffled = [...PROJECTS];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+    }
+
+    setProjects(shuffled);
+    setShuffleReady(true);
+  }, []);
 
   const filtered =
     filter === "All"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.tags.includes(filter));
+      ? projects
+      : projects.filter((p) => p.tags.includes(filter));
 
   useEffect(() => {
     setVisibleCount(6);
@@ -61,7 +78,9 @@ export function Portfolio() {
         <LayoutGroup>
           <motion.div
             layout
-            className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className={`mt-12 grid gap-6 transition-opacity duration-300 sm:grid-cols-2 lg:grid-cols-3 ${
+              shuffleReady ? "opacity-100" : "opacity-0"
+            }`}
           >
             <AnimatePresence mode="popLayout">
               {visibleProjects.map((project) => (

@@ -208,7 +208,7 @@ export function Contact() {
               type="submit"
               disabled={isSubmitting || sent}
               whileTap={{ scale: 0.98 }}
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-500 px-6 py-4 text-sm font-semibold text-white shadow-[0_12px_35px_rgba(168,85,247,0.25)] transition hover:brightness-110 disabled:opacity-70"
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-4 text-sm font-semibold text-black shadow-[0_12px_35px_rgba(163,230,53,0.2)] transition hover:bg-accent-soft hover:shadow-[0_14px_40px_rgba(163,230,53,0.3)] disabled:opacity-70"
             >
               {isSubmitting ? <><Loader2 size={17} className="animate-spin" /> Sending</> : sent ? <><CheckCircle2 size={17} /> Message sent</> : <><Send size={17} /> Send Message</>}
             </motion.button>
