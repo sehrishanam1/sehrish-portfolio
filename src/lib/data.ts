@@ -371,7 +371,7 @@ export const PROJECTS: Project[] = [
     year: "2026",
     tags: ["Web", "WordPress"],
     tagline: "Website · WordPress · Project Management",
-    image: "/projects/wordpress-websites/infinity-empire/Banner.webp",
+    image: "/projects/wordpress-websites/infinity-empire/banner.webp",
     bannerFit: "contain",
     galleryPosition: "inline",
     description: [

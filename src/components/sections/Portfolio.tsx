@@ -82,7 +82,7 @@ export function Portfolio() {
               shuffleReady ? "opacity-100" : "opacity-0"
             }`}
           >
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence>
               {visibleProjects.map((project) => (
                 <motion.article
                   key={project.id}
