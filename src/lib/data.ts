@@ -769,6 +769,56 @@ export const PROJECTS: Project[] = [
       "/projects/wordpress-websites/JoJoCN/snapshot (7).png",
     ],
   },
+  {
+    id: 15,
+    title: "No Stars – Premium Hotel Apartments",
+    category: "Bilingual Booking Engine · Direct-Booking Hospitality Site",
+    year: "2025",
+    tags: ["Web", "WordPress"],
+    tagline: "Website · WordPress/WooCommerce · Elementor · WPML · 2025",
+    image: "/projects/wordpress-websites/no-stars/screenshots (1).webp",
+    bannerFit: "contain",
+    galleryPosition: "inline",
+    description: [
+      "No Stars is the direct-booking website for a 5-unit premium apartment complex in Ioannina, Greece, built to convert organic and direct traffic into confirmed reservations — reducing the property's reliance on OTA commissions from Booking.com and Airbnb. I built the site on WordPress with Elementor as the page-building layer, and implemented full Greek/English localization with WPML, including a language-switcher and separate URL structures (/en/) so international guests could browse and book seamlessly in their own language.",
+      "The core challenge was integrating a real booking engine, not just a \"contact us\" form. I built a custom date-picker/availability flow (arrival, departure, adults/children selectors) tied into a third-party PMS reservation system, handling date formatting, form validation, and the API/iframe integration needed to pass live availability data between the site and the booking engine — a meaningfully more technical task than a typical brochure-style hospitality site.",
+    ],
+    stats: [
+      { value: "Full-Stack", label: "+ Elementor" },
+      { value: "5 Units", label: "Boutique Property" },
+      { value: "EL / EN", label: "WPML Bilingual" },
+      { value: "4.9★", label: "72 Live Reviews" },
+    ],
+    worth:
+      "Hospitality sites live or die on trust and frictionless booking. This meant going beyond a pretty gallery: integrating live third-party data (Google Reviews, pulled in real time at 4.9★ from 72 reviews), building a genuinely functional reservation flow instead of a static form, and localizing the entire experience — not just translating text, but restructuring URLs and navigation for two languages — so the site could convert both domestic Greek travelers and international guests directly.",
+    demonstrates: [
+      "CMS & page-building architecture — Built on WordPress with Elementor (v3.29.2), enabling flexible, editable layouts for rooms, galleries, and local guide content.",
+      "Multilingual localization — Full Greek/English setup via WPML (Sitepress), with a language-switcher and separate /en/ URL structure for proper bilingual SEO and UX.",
+      "Custom-coded booking flow — Embedded date-picker/availability form (arrival, departure, adults/children) integrated with a third-party reservation engine, including form validation and date-formatting logic.",
+      "Live third-party data integration — Real-time Google Business reviews widget pulling live rating/review data via API.",
+      "Interactive galleries & local guide — Custom Elementor-based image galleries with lightbox functionality for rooms and nearby attractions.",
+      "Location integration — Embedded Google Maps for property context and directions.",
+      "SEO & localization metadata — hreflang-style language handling, custom favicon/tile icons, and responsive meta viewport configuration.",
+      "Social & brand integration — Direct Facebook/Instagram links with consistent branding across all sections.",
+    ],
+    skills: [
+      "WordPress Development",
+      "Elementor",
+      "WPML (Multilingual/Localization)",
+      "Booking Engine/API Integration",
+      "Form Validation",
+      "Third-Party Widget Integration (Reviews API)",
+      "SEO & hreflang Implementation",
+      "Responsive/Mobile UI",
+    ],
+    gallery: [
+      "/projects/wordpress-websites/no-stars/screenshots (1).webp",
+      "/projects/wordpress-websites/no-stars/screenshots (2).webp",
+      "/projects/wordpress-websites/no-stars/screenshots (3).webp",
+      "/projects/wordpress-websites/no-stars/screenshots (4).webp",
+      "/projects/wordpress-websites/no-stars/screenshots (5).webp",
+    ],
+  },
 ];
 
 export interface TimelineItem {
